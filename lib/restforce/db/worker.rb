@@ -89,12 +89,11 @@ module Restforce
         forked.write do |writer|
           log "INITIALIZING..."
           FieldProcessor.preload
-          YAML.dump(FieldProcessor.field_cache, writer)
+#           YAML.dump(FieldProcessor.field_cache, writer)
         end        
         
         forked.read do |reader|
-          puts reader
-          FieldProcessor.field_cache.merge!(YAML.load(reader.read))
+#           FieldProcessor.field_cache.merge!(YAML.load(reader.read))
         end
 
         forked.run
