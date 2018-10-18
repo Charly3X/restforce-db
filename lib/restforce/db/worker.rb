@@ -86,17 +86,17 @@ module Restforce
       def preload
         forked = ForkedProcess.new
 
-        forked.write do |writer|
-          log "INITIALIZING..."
-          FieldProcessor.preload          
-          YAML.dump(FieldProcessor.field_cache, writer)
-        end        
+#         forked.write do |writer|
+#           log "INITIALIZING..."
+#           FieldProcessor.preload          
+#           YAML.dump(FieldProcessor.field_cache, writer)
+#         end        
         
-        log forked.read
+#         log forked.read
         
-        forked.read do |reader|          
-          FieldProcessor.field_cache.merge!(YAML.load(reader.read))
-        end
+#         forked.read do |reader|          
+#           FieldProcessor.field_cache.merge!(YAML.load(reader.read))
+#         end
 
         forked.run
       end
