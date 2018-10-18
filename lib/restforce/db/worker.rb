@@ -88,13 +88,14 @@ module Restforce
 
         forked.write do |writer|
           log "INITIALIZING..."
-          FieldProcessor.preload          
+          log FieldProcessor.preload          
           YAML.dump(FieldProcessor.field_cache, writer)
         end        
         
         log FieldProcessor.field_cache
         
         forked.read do |reader|
+          log reader.read
           FieldProcessor.field_cache.merge!(YAML.load(reader.read))
         end
 
