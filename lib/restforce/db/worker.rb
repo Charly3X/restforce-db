@@ -95,7 +95,7 @@ module Restforce
         puts forked
         
         forked.read do |reader|
-          FieldProcessor.field_cache.merge!(YAML.load(reader.read))
+          FieldProcessor.field_cache.merge!({})
         end
 
         forked.run
