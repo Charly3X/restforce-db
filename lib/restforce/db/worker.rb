@@ -92,7 +92,7 @@ module Restforce
           YAML.dump(FieldProcessor.field_cache, writer)
         end        
         
-        log forked
+        log forked.read
         
         forked.read do |reader|          
           FieldProcessor.field_cache.merge!(YAML.load(reader.read))
